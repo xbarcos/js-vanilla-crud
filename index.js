@@ -21,8 +21,8 @@ function cleanInputs() {
     inputImage.value = '';
 }
 
-function firstToUpper(word) {
-    let newString = word[0].toUpperCase() + word.substr(1);
+function firstToUpper(string) {
+    let newString = string[0].toUpperCase() + string.substr(1);
     return newString;    
 }
 
