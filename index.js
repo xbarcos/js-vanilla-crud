@@ -17,13 +17,21 @@ function showAlert(message, className) {
 
 function cleanInputs() {
     inputName.value = '';
-    inputType.value = '';
+    inputType.value = 'Selecione o Tipo';
     inputImage.value = '';
 }
 
 function firstToUpper(word) {
     let newString = word[0].toUpperCase() + word.substr(1);
     return newString;    
+}
+
+function validateType() {
+    let input = document.getElementById('inputType').value;
+    if (input === 'Selecione o Tipo') {
+        return false;
+    }
+    return true;
 }
 
 function validatePokemon() {
@@ -33,32 +41,34 @@ function validatePokemon() {
         }
     }   
     pokemons.push(inputName.value);
-    return true;
+    return true;    
 }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (validatePokemon()) {
-        const row = document.createElement('tr');
-        inputType.value = inputType.value.toLowerCase();
-        row.innerHTML = `
-        <td><img src="${inputImage.value}" width="100px"</td>
-        <td>${firstToUpper(inputName.value)}</td>
-        <td><button id="type-button" class="${inputType.value}">${firstToUpper(inputType.value)}</button></td>
-        <td>
-            <a href="#" class="btn btn-danger btn-sm delete">Remover</a>
-        </td>
-        `
-        body.appendChild(row);
-        cleanInputs();
-        showAlert('Pokemon Adicionado', 'success');
+    if (validateType()) {
+        if (validatePokemon()) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td><img src="${inputImage.value}" width="100px"</td>
+            <td>${firstToUpper(inputName.value)}</td>
+            <td><button id="type-button" class="${inputType.value}">${firstToUpper(inputType.value)}</button></td>
+            <td>
+                <a href="#" class="btn btn-danger btn-sm delete">Remover</a>
+            </td>
+            `
+            body.appendChild(row);
+            cleanInputs();
+            showAlert('Pokemon Adicionado', 'success');
+        }
+        else {
+            cleanInputs();
+            showAlert('Pokemon já existente!', 'danger');
+        }
     }
     else {
-        //showAlert('Pokemon já existe!', 'warning');
-        showAlert('Pokemon já existente!', 'danger');
-        cleanInputs();
+        showAlert('Selecione um tipo', 'warning');
     }
-
 })
 
 body.addEventListener('click', (e) => {
