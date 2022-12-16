@@ -15,11 +15,19 @@ table td {
     font-size: x-large;
 }
 
-#type-button {
+#type-badge {
     border-radius: 15px;
     width: 100px;
     cursor: auto;
     border: none;
+	color: black;
+	font-size: medium;
+	position: relative;
+	top: -2px;
+}
+
+#delete-button {
+	cursor: pointer;
 }
 
 .steel {

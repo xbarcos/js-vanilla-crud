@@ -23,7 +23,7 @@ function cleanInputs() {
 
 function firstToUpper(string) {
     let newString = string[0].toUpperCase() + string.substr(1);
-    return newString;    
+    return newString;
 }
 
 function validateType() {
@@ -39,9 +39,9 @@ function validatePokemon() {
         if (inputName.value === pokemons[i]) {
             return false;
         }
-    }   
+    }
     pokemons.push(inputName.value);
-    return true;    
+    return true;
 }
 
 form.addEventListener('submit', (e) => {
@@ -50,11 +50,11 @@ form.addEventListener('submit', (e) => {
         if (validatePokemon()) {
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td><img src="${inputImage.value}" width="100px"</td>
-            <td>${firstToUpper(inputName.value)}</td>
-            <td><button id="type-button" class="${inputType.value}">${firstToUpper(inputType.value)}</button></td>
-            <td>
-                <a href="#" class="btn btn-danger btn-sm delete">Remover</a>
+            <td class="col-3"><img src="${inputImage.value}" width="70px"</td>
+            <td class="col-3">${firstToUpper(inputName.value)}</td>
+            <td class="col-3"><span id="type-badge" class="badge badge-dark ${inputType.value}">${firstToUpper(inputType.value)}</span></td>
+            <td class="col-3">
+                <i href="#" id="delete-button" class="fa-sharp fa-solid fa-trash delete"></i>
             </td>
             `
             body.appendChild(row);
@@ -79,7 +79,7 @@ body.addEventListener('click', (e) => {
         showAlert('Pokemon removido com sucesso', 'danger');
         pokemons.splice(0, 1);
         for (i = 0; i < pokemons.length; i++) {
-            if (pokemons[i]=== actualRow.children[1].value) {
+            if (pokemons[i] === actualRow.children[1].value) {
                 pokemons.splice(i, 1);
                 console.log(pokemons)
             }
