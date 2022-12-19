@@ -4,15 +4,20 @@ const inputImage = document.getElementById('inputImage');
 const body = document.getElementById('#table-body');
 const table = document.getElementById('main-table');
 const form = document.getElementById('main-form');
+const container = document.getElementById('main-container');
 const pokemons = [];
 
 function showAlert(message, className) {
-    const divContainer = document.getElementById('alertDiv');
-    const div = document.createElement('div');
-    div.className = `alert alert-${className}`;
-    div.innerHTML = message;
-    divContainer.appendChild(div);
-    setTimeout(() => document.querySelector(".alert").remove(), 3000);
+    let option = [{
+        animation : true,
+        delay : 2000
+    }]
+    let toastElement = document.getElementById('myToast');
+    toastElement.className = `toast bg-${className}`;
+    let textContent = document.getElementById('text-content');
+    textContent.innerHTML = message;
+    let toasty = new bootstrap.Toast(toastElement, option);
+    toasty.show();
 }
 
 function cleanInputs() {
@@ -54,7 +59,9 @@ form.addEventListener('submit', (e) => {
             <td class="col-3">${firstToUpper(inputName.value)}</td>
             <td class="col-3"><span id="type-badge" class="badge badge-dark ${inputType.value}">${firstToUpper(inputType.value)}</span></td>
             <td class="col-3">
-                <i href="#" id="delete-button" class="fa-sharp fa-solid fa-trash delete"></i>
+                <a href="#" id="delete-button">
+                    <i class="fa-sharp fa-solid fa-trash delete" title="lixo"></i>
+                </a>
             </td>
             `
             body.appendChild(row);
@@ -74,8 +81,9 @@ form.addEventListener('submit', (e) => {
 body.addEventListener('click', (e) => {
     target = e.target;
     const actualRow = target.parentElement.parentElement;
+    console.log(actualRow.parentElement);
     if (target.classList.contains('delete')) {
-        actualRow.remove();
+        actualRow.parentElement.remove();
         showAlert('Pokemon removido com sucesso', 'danger');
         pokemons.splice(0, 1);
         for (i = 0; i < pokemons.length; i++) {

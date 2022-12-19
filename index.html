@@ -9,29 +9,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/acada6c01b.js" crossorigin="anonymous"></script>
 </head>
 
 <body style="color: white; background-color: #1d2630">
-    <div class="container mt-5" style="width: 800px;">
-        <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-              <img src="..." class="rounded mr-2" alt="...">
-              <strong class="mr-auto">Bootstrap</strong>
-              <small class="text-muted">2 seconds ago</small>
-              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="toast-body">
-              Heads up, toasts will stack automatically
-            </div>
-          </div>
-        </div>
+    <div class="container mt-5" style="width: 800px;" id="main-container">
         <div class="d-flex justify-content-center">
             <h1 class="display-5 mb-5">Table Pokemon</h1>
         </div>
-        <button id="MyButton" class="btn btn-primary">Enter</button>
         <div class="main-row justify-content-center">
             <form id="main-form">
                 <label for="inputName">Nome do Pokemon *</label>
@@ -64,8 +50,19 @@
                 </div>
             </form>
         </div>
-        <div id="alertDiv"></div>
-        <div class="col-12 col-md-10 mt-5"></div>
+        <div class="toast-container position-absolute top-0 end-0 p-3">
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
+                <div class="toast-header">
+                    <img src="./pokeball-icon.svg" width="30px" class="rounded me-2" alt="pokeball-icon">
+                    <strong class="me-auto">Table Pokemon</strong>
+                    <small>segundos atrás</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                    <div class="toast-body" id="text-content">
+                    </div>
+            </div>
+        </div>
+
         <table class="table table-hover table-dark" id="main-table">
             <thead>
                 <th class="col-3">Imagem</th>
@@ -78,13 +75,12 @@
         </table>
     </div>
 
-
+    <!--<script src="mock-table.js"></script>-->
 
     
     <script src="index.js"></script>
     <script>
-        let toast = document.getElementById('toast');
-        toast.show();
+
     </script>
 </body>
 
