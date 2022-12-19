@@ -2,6 +2,8 @@
 
 Desafio solicitado por Roberto Campos, para o grupo de mentoria TI para a Vida.
 
+Você pode conferir o resultado do deploy mais recente clicando nesse link: https://xbarcos.github.io/crud-pokemon
+
 ### O sistema conta com a possibilidade de poder adicionar e remover pokemons desde o #001 ao #905 da pokedex original.
 <img src="./print1.png" />
 <img src="./print2.png" />
