@@ -81,7 +81,10 @@ form.addEventListener('submit', (e) => {
 body.addEventListener('click', (e) => {
     target = e.target;
     const actualRow = target.parentElement.parentElement;
-    console.log(actualRow.parentElement);
+    let isValid = confirm('Deseja deletar o Pokemon?');
+    if (!isValid) {
+        return;
+    }
     if (target.classList.contains('delete')) {
         actualRow.parentElement.remove();
         showAlert('Pokemon removido com sucesso', 'danger');
